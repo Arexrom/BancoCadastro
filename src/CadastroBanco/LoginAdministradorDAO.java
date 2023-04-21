@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
  *
  * @author Alex 
  */
-public class LoginAdministradorDAO {
+public class Login {
 
     Connection conn; 
      
@@ -33,15 +33,15 @@ public class LoginAdministradorDAO {
         conn = new ConnectaMysql().Conectabd();
 
         try {
-            String sql = "select * from administradores where nome =? and password = ?";
+            String sql = "select * from adm where email =? and password = ?";
             PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setString(1,objetocadastro.getNome());
+            pstm.setString(1,objetocadastro.getEmail());
             pstm.setString(2,objetocadastro.getPassword());
             
             ResultSet rs = pstm.executeQuery();
             return rs;
         } catch (SQLException erro) {
-            JOptionPane.showMessageDialog(null, "usuario" + erro);
+            JOptionPane.showMessageDialog(null, "email" + erro);
         return null;
     }
         
